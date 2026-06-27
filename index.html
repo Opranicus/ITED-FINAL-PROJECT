@@ -3,101 +3,38 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Car Grid Editor</title>
+    <title>Traffice Light Simulator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <div id="container">
-        <img id="road" src="assets/other/intersec.png">
-        <div id="grid"></div>
+
+        <div id="roadContainer">
+            <img id="road" src="assets/other/intersec.png">
+            <div id="grid"></div>
+        </div>
+
+        <div class="right-container">
+            <div id="dashboard">
+                <h3>Cars</h3>
+
+                <div id="carTray">
+                    <div class="car" draggable="true"></div>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button id="start">Start Traffic Lights</button>
+                <button id="stop">Stop Traffic Lights</button>
+            </div>
+        </div>
+
+
     </div>
 
-
-    <script>
-        const grid = document.getElementById("grid");
-
-        const rows = 10;
-        const cols = 20;
-
-        let draggedCar = null;
-        let sourceCell = null;
-
-        // Build grid with fixed cells
-        for (let i = 0; i < rows * cols; i++) {
-            const cell = document.createElement("div");
-            cell.classList.add("cell");
-
-            cell.addEventListener("dragover", (e) => {
-                e.preventDefault();
-            });
-
-            cell.addEventListener("drop", (e) => {
-                e.preventDefault();
-                if (!draggedCar) return;
-
-                const existingCar = cell.querySelector(".car");
-                if (existingCar) return;
-
-                if (sourceCell) sourceCell.removeChild(draggedCar);
-                cell.appendChild(draggedCar);
-
-                draggedCar = null;
-                sourceCell = null;
-            });
-
-            grid.appendChild(cell);
-        }
-
-        // Create car
-        function createCar() {
-            const car = document.createElement("img");
-            car.classList.add("car");
-            car.src = "assets/cars/ambatucar.png";
-
-            car.draggable = true;
-
-            car.addEventListener("dragstart", (e) => {
-                draggedCar = car;
-                sourceCell = car.parentElement;
-            });
-
-            car.addEventListener("dragend", () => {
-                // If drop didn't happen (dropped outside), reset
-                if (draggedCar) {
-                    draggedCar = null;
-                    sourceCell = null;
-                }
-            });
-
-            return car;
-        }
-
-        // Create traffic light
-        function createTrafficLight() {
-            const tl = document.createElement("img");
-            tl.classList.add("traffic-light");
-            tl.src = "assets/other/traffic_light_red.png";
-            return tl;
-        }
-
-        // Get cell by col, row
-        function getCell(col, row) {
-            return grid.children[row * cols + col];
-        }
-
-        // Cars
-        getCell(13, 4).appendChild(createCar());
-        getCell(13, 5).appendChild(createCar());
-
-        // Traffic lights at 4 corners of intersection
-        getCell(7, 2).appendChild(createTrafficLight());
-        getCell(12, 2).appendChild(createTrafficLight());
-        getCell(7, 7).appendChild(createTrafficLight());
-        getCell(12, 7).appendChild(createTrafficLight());
-
-    </script>
+    <script src="script.js"></script>
 
 </body>
 
