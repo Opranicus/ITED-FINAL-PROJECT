@@ -54,15 +54,66 @@ function createTrafficLight() {
     return tl;
 }
 
-function getCell(col,row){
+function getCell(col, row) {
     return grid.children[row * cols + col];
 }
 
-//lights pos
-getCell(7,2).appendChild(createTrafficLight());
-getCell(12,2).appendChild(createTrafficLight());
-getCell(7,7).appendChild(createTrafficLight());
-getCell(12,7).appendChild(createTrafficLight());
+const light1 = createTrafficLight();
+const light2 = createTrafficLight();
+const light3 = createTrafficLight();
+const light4 = createTrafficLight();
+
+getCell(7, 2).appendChild(light1);
+getCell(12, 2).appendChild(light2);
+getCell(7, 7).appendChild(light3);
+getCell(12, 7).appendChild(light4);
+
+const lights = [light1, light2, light3, light4];
+
+//loop lights
+function loopLights(active) {
+    lights.forEach(light => {
+        light.style.backgroundImage = 'url("assets/other/red.png")';
+
+    });
+    lights[active].style.backgroundImage = 'url("assets/other/green.png")';
+}
+
+let current = 0;
+let timer = null;
+
+start.addEventListener("click", function () {
+    if (timer) {
+        return;
+    }
+
+    loopLights(current);
+
+    timer = setInterval(() => {
+        setTimeout(() => {
+            lights[current].style.backgroundImage = 'url("assets/other/yellow.png")';
+        }, 8000);
+
+        setTimeout(() => {
+            current = (current + 1) % 4;
+            loopLights(current);
+        }, 10000);
+
+
+    }, 10000);
+
+})
+
+stop.addEventListener("click", function () {
+    clearInterval(timer);
+    timer = null;
+
+    lights.forEach(light => {
+        light.style.backgroundImage = 'url("assets/other/red.png")';
+    });
+
+    current = 0;
+})
 
 const dashboard = document.getElementById("carTray");
 
@@ -82,7 +133,3 @@ dashboard.addEventListener("drop", (e) => {
 });
 
 
-//start lights
-start.addEventListener("click", function(){
-    
-})
