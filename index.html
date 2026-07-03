@@ -1,41 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Traffice Light Simulator</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
-
+  <body>
     <div id="container">
+      <div id="roadContainer">
+        <img id="road" src="assets/other/intersec.png" />
+        <div id="grid"></div>
+      </div>
 
-        <div id="roadContainer">
-            <img id="road" src="assets/other/intersec.png">
-            <div id="grid"></div>
+      <div class="right-container">
+        <div id="dashboard">
+          <h3>Cars</h3>
+
+          <div id="carTray">
+            <div class="car" draggable="true"></div>
+            <div class="car" draggable="true"></div>
+           
+          </div>
         </div>
 
-        <div class="right-container">
-            <div id="dashboard">
-                <h3>Cars</h3>
-
-                <div id="carTray">
-                    <div class="car" draggable="true"></div>
-                </div>
-            </div>
-
-            <div class="buttons">
-                <button id="start">Start Traffic Lights</button>
-                <button id="stop">Stop Traffic Lights</button>
-            </div>
+        <div class="buttons">
+          <button id="start">Start Traffic Lights</button>
+          <button id="stop">Stop Traffic Lights</button>
+          <div id="warning"></div>
         </div>
-
-
+      </div>
     </div>
 
     <script src="script.js"></script>
-
-</body>
-
+  </body>
 </html>
