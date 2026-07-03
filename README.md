@@ -9,4 +9,14 @@
 </ul>
 
 <h1>Project Description</h1>
-<p>A traffic management simulation swhere users control vehicles and signals</p>
+<p>A traffic management simulation where users control vehicles and signals.</p>
+
+<h1>Event Driven Programming Concept Applied:</h1>
+<ul>
+  <li>Event Listeners</li>
+  <li>Click Event</li>
+  <li>Drag Event</li>
+  <li>Event Object</li>
+  <li>Callback Function</li>
+  <li>Timer Events</li>
+</ul>
