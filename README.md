@@ -20,3 +20,6 @@
   <li>Callback Function</li>
   <li>Timer Events</li>
 </ul>
+
+<h1>Deployed Project</h1>
+<a href="https://opranicus.github.io/ITED-FINAL-PROJECT/">Traffic Light Sim.</a>
